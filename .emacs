@@ -1,24 +1,18 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ns-command-modifier (quote meta))
- '(tool-bar-mode nil)
- '(x-select-enable-clipboard t))
+;; No toolbar
+(tool-bar-mode -1)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; No beep
 (setq visible-bell t)
-(setq mac-option-modifier nil
-      mac-command-modifier 'meta
-      mac-allow-anti-aliasing t
-      x-select-enable-clipboard t
-      mac-command-key-is-meta t)
+
+;; Mac settings
+(setq default-input-method "MacOSX")
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'none)
+(setq x-select-enable-clipboard t)
+(setq mac-allow-anti-aliasing t)
+
+;; Relocate backup files
+(setq backup-directory-alist '(("." . "~/.emacs_backups")))
 
 ;; Enable Marmalade package archive
 (require 'package)
