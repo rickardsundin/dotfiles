@@ -1,15 +1,15 @@
 ;; No toolbar
-(tool-bar-mode -1)
+(tool-bar-mode nil)
 
 ;; No beep
 (setq visible-bell t)
 
 ;; Mac settings
-(setq default-input-method "MacOSX")
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'none)
-(setq x-select-enable-clipboard t)
-(setq mac-allow-anti-aliasing t)
+(setq default-input-method "MacOSX"
+      mac-command-modifier 'meta
+      mac-option-modifier 'none
+      x-select-enable-clipboard t
+      mac-allow-anti-aliasing t)
 
 ;; Relocate backup files
 (setq backup-directory-alist '(("." . "~/.emacs_backups")))
