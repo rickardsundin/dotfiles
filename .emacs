@@ -1,5 +1,5 @@
 ;; No toolbar
-(tool-bar-mode nil)
+(tool-bar-mode -1)
 
 ;; No beep
 (setq visible-bell t)
