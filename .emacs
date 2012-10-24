@@ -14,6 +14,10 @@
 ;; Relocate backup files
 (setq backup-directory-alist '(("." . "~/.emacs_backups")))
 
+;; Journaling macros
+(defun insert-time () (interactive) (insert (format-time-string "%Y-%m-%d %R")))
+(defun journal () (interactive) (find-file "~/Documents/Journal.txt") (end-of-buffer) (insert "\n\n") (insert-time) (insert "\n================\n"))
+
 ;; Enable Marmalade package archive
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
