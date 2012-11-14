@@ -1,5 +1,6 @@
 alias ll='ls -al'
 alias rm='rm -i'
 alias today='date "+%Y-%m-%d%n"'
+alias e='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 alias em='open -a /Applications/Emacs.app'
 alias journal='open -a /Applications/Emacs.app --args -f journal'
