@@ -52,3 +52,10 @@ set statusline+=%=          " right align below here
 set statusline+=%{fugitive#statusline()}  "Indicate the current git branch
 
 set laststatus=2            "Always display statusline
+
+"Navigate easier between split windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
