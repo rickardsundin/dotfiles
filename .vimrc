@@ -1,18 +1,34 @@
-" Required for this vimrc to work
-"  - pathogen (plugin management)
-"  - solarized (color scheme)
-"  - fugitive (git wrapper)
+" Start with configuration for Vundle (plugin manager)
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+" plugins on GitHub repo
+Plugin 'altercation/vim-colors-solarized' " color scheme
+Plugin 'tpope/vim-fugitive'               " git wrapper
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" cd ~/.vim/bundle
-" git clone git://github.com/altercation/vim-colors-solarized.git
-" git clone git://github.com/tpope/vim-fugitive.git
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " Enable Pathogene
-execute pathogen#infect()
 syntax on
-filetype plugin indent on
 
 " Colors
 syntax enable
