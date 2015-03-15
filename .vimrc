@@ -10,9 +10,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
-" plugins on GitHub repo
 Plugin 'altercation/vim-colors-solarized' " color scheme
 Plugin 'tpope/vim-fugitive'               " git wrapper
+
+" plugins for clojure development
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-fireplace'
+Plugin 'paredit.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
