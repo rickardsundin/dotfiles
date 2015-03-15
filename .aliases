@@ -6,4 +6,6 @@ alias em='open -a /Applications/Emacs.app'
 alias journal='open -a /Applications/Emacs.app --args -f journal'
 alias hidedesktopicons='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
 alias showdesktopicons='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
+alias jdk7='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
+alias jdk8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 
