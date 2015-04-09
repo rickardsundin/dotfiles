@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'altercation/vim-colors-solarized' " color scheme
 Plugin 'tpope/vim-fugitive'               " git wrapper
+Plugin 'christoomey/vim-tmux-navigator'   " navigate vim and tmux splits
 
 " plugins for clojure development
 Plugin 'tpope/vim-classpath'
