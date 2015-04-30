@@ -58,6 +58,9 @@ set statusline+=%{fugitive#statusline()}  "Indicate the current git branch
 
 set laststatus=2            "Always display statusline
 
+" Use jj to exit insert mode
+inoremap fd <ESC>
+
 "Navigate easier between split windows
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
