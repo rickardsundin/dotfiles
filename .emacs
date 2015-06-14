@@ -18,13 +18,20 @@
 (defun insert-time () (interactive) (insert (format-time-string "%Y-%m-%d %R")))
 (defun journal () (interactive) (find-file "~/Documents/Journal.txt") (end-of-buffer) (insert "\n\n") (insert-time) (insert "\n================\n"))
 
-;; Enable Marmalade package archive
+;; Enable Emacs Lisp Package Archive (ELPA)
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
-;; Always install nREPL
-(when (not (package-installed-p 'nrepl)) (package-install 'nrepl))
+;; Color scheme
+(when (not (package-installed-p 'color-theme-solarized)) (package-install 'color-theme-solarized))
+(set-frame-parameter nil 'background-mode 'light)
+(set-terminal-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
 
-;; Prevent error buffer in REPL
-(setq nrepl-popup-stacktrace nil)
+;; Vim emulation
+(when (not (package-installed-p 'evil)) (package-install 'evil))
+(require 'evil)
+(evil-mode 1)
