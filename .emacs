@@ -35,3 +35,6 @@
 (when (not (package-installed-p 'evil)) (package-install 'evil))
 (require 'evil)
 (evil-mode 1)
+
+;; Git
+(when (not (package-installed-p 'magit)) (package-install 'magit))
