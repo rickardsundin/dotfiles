@@ -26,18 +26,18 @@
 (package-initialize)
 
 ;; Color scheme
-(when (not (package-installed-p 'color-theme-solarized)) (package-install 'color-theme-solarized))
+(unless (package-installed-p 'color-theme-solarized) (package-install 'color-theme-solarized))
 (set-frame-parameter nil 'background-mode 'light)
 (set-terminal-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
 
 ;; Vim emulation
-(when (not (package-installed-p 'evil)) (package-install 'evil))
+(unless (package-installed-p 'evil) (package-install 'evil))
 (require 'evil)
 (evil-mode 1)
 
 ;; Git
-(when (not (package-installed-p 'magit)) (package-install 'magit))
+(unless (package-installed-p 'magit) (package-install 'magit))
 
 ;; Calendar
 (setq calendar-week-start-day 1)
