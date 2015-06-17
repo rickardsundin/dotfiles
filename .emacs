@@ -38,3 +38,6 @@
 
 ;; Git
 (when (not (package-installed-p 'magit)) (package-install 'magit))
+
+;; Calendar
+(setq calendar-week-start-day 1)
