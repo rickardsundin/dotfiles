@@ -28,7 +28,8 @@
 ;; Install packages
 (defvar my-packages '(color-theme-solarized
 		      evil
-		      magit))
+		      magit
+		      cider))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
 
 ;; Color scheme
