@@ -25,19 +25,20 @@
                          ("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 
+;; Install packages
+(defvar my-packages '(color-theme-solarized
+		      evil
+		      magit))
+(dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
+
 ;; Color scheme
-(unless (package-installed-p 'color-theme-solarized) (package-install 'color-theme-solarized))
 (set-frame-parameter nil 'background-mode 'light)
 (set-terminal-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
 
 ;; Vim emulation
-(unless (package-installed-p 'evil) (package-install 'evil))
 (require 'evil)
 (evil-mode 1)
-
-;; Git
-(unless (package-installed-p 'magit) (package-install 'magit))
 
 ;; Calendar
 (setq calendar-week-start-day 1)
