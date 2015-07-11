@@ -4,13 +4,6 @@
 ;; No beep
 (setq visible-bell t)
 
-;; Mac settings
-(setq default-input-method "MacOSX"
-      mac-command-modifier 'meta
-      mac-option-modifier 'none
-      x-select-enable-clipboard t
-      mac-allow-anti-aliasing t)
-
 ;; Relocate backup files
 (setq backup-directory-alist '(("." . "~/.emacs_backups")))
 
