@@ -1,6 +1,9 @@
 ;; No toolbar
 (tool-bar-mode -1)
 
+;; No scrollbar
+(scroll-bar-mode -1)
+
 ;; No beep
 (setq visible-bell t)
 
