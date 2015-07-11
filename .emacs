@@ -21,9 +21,14 @@
 ;; Install packages
 (defvar my-packages '(color-theme-solarized
 		      evil
+		      exec-path-from-shell
 		      magit
 		      cider))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
+
+;; Set path from shell when Emacs is launched from GUI
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; Color scheme
 (set-frame-parameter nil 'background-mode 'light)
