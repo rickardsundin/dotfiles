@@ -48,3 +48,7 @@
 
 ;; Calendar
 (setq calendar-week-start-day 1)
+
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(setq magit-last-seen-setup-instructions "1.4.0")
