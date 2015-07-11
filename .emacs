@@ -41,5 +41,10 @@
 (require 'evil)
 (evil-mode 1)
 
+;; Find files with fuzzy matching
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
 ;; Calendar
 (setq calendar-week-start-day 1)
