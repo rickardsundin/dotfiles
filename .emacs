@@ -10,6 +10,9 @@
 ;; No beep
 (setq visible-bell t)
 
+;; No splash screen
+(setq inhibit-startup-message t)
+
 ;; Relocate backup files
 (setq backup-directory-alist '(("." . "~/.emacs_backups")))
 
