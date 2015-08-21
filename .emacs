@@ -31,6 +31,7 @@
 (defvar my-packages '(color-theme-solarized
 		      evil
 		      exec-path-from-shell
+		      ido-vertical-mode
 		      magit
 		      cider))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
@@ -49,9 +50,12 @@
 (evil-mode 1)
 
 ;; Find files with fuzzy matching
+(require 'ido-vertical-mode)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 ;; Calendar
 (setq calendar-week-start-day 1)
