@@ -34,7 +34,8 @@
 		      ido-vertical-mode
 		      magit
 		      cider
-		      clj-refactor))
+		      clj-refactor
+		      restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
 
 ;; Set path from shell when Emacs is launched from GUI
