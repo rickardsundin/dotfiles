@@ -33,7 +33,8 @@
 		      exec-path-from-shell
 		      ido-vertical-mode
 		      magit
-		      cider))
+		      cider
+		      clj-refactor))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
 
 ;; Set path from shell when Emacs is launched from GUI
@@ -63,3 +64,11 @@
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+;; Clojure
+(require 'clj-refactor)
+(defun my-clojure-mode-hook ()
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
