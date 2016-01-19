@@ -8,4 +8,5 @@ alias hidedesktopicons='defaults write com.apple.finder CreateDesktop -bool fals
 alias showdesktopicons='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
 alias jdk7='export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)'
 alias jdk8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+alias tree='find . -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"'
 
