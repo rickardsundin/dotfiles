@@ -31,6 +31,7 @@
 (defvar my-packages '(color-theme-solarized
 		      evil
 		      exec-path-from-shell
+		      which-key
 		      ido-vertical-mode
 		      magit
 		      cider
@@ -50,6 +51,9 @@
 ;; Vim emulation
 (require 'evil)
 (evil-mode 1)
+
+;; Display available keybindings in popup
+(which-key-mode)
 
 ;; Find files with fuzzy matching
 (require 'ido-vertical-mode)
