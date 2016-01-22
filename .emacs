@@ -72,6 +72,20 @@
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+;; Org-mode
+(require 'ox-latex)
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+
+(add-to-list 'org-latex-classes
+          '("koma-article"
+             "\\documentclass{scrartcl}"
+             ("\\section{%s}" . "\\section*{%s}")
+             ("\\subsection{%s}" . "\\subsection*{%s}")
+             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+             ("\\paragraph{%s}" . "\\paragraph*{%s}")
+             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 ;; Clojure
 (require 'clj-refactor)
 (defun my-clojure-mode-hook ()
