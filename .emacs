@@ -33,6 +33,7 @@
 		      exec-path-from-shell
 		      which-key
 		      ido-vertical-mode
+		      iedit
 		      magit
 		      cider
 		      clj-refactor
