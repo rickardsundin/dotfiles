@@ -1,0 +1,200 @@
+#+TITLE:  Emacs Configuration File
+#+AUTHOR: Rickard Sundin
+#+EMAIL:  rickard@snart.nu
+#+PROPERTY: tangle ~/.emacs
+
+* Introduction
+This is my =.emacs= file. It is written in org-mode thanks to [[http://www.howardism.org/][Howard Abrahams]].
+
+** Basic appearance
+For a clean appearance I remove the toolbar, menubar and scrollbars. I always
+try to always use keyboard shortcuts anyways.
+
+#+BEGIN_SRC elisp 
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+#+END_SRC
+
+Usually I never want my computer to beep at me.
+Due to a bug that makes [[http://debbugs.gnu.org/cgi/bugreport.cgi?bug%3D21662][visible-bell cause display artifacts on OS X 10.11]] I use
+a [[http://stuff-things.net/2015/10/05/emacs-visible-bell-work-around-on-os-x-el-capitan/][workaround]] that flashes the mode line instead.
+
+#+BEGIN_SRC elisp 
+  (setq visible-bell nil)
+  (setq ring-bell-function (lambda ()
+                             (invert-face 'mode-line)
+                             (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+#+END_SRC
+
+Also remove the startup message and the message explaining the scratch buffer. 
+
+#+BEGIN_SRC elisp
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+#+END_SRC
+
+** Backup files
+Keep all backup files in one place.
+
+#+BEGIN_SRC elisp 
+(setq backup-directory-alist '(("." . "~/.emacs_backups")))
+#+END_SRC
+
+** Package management
+Emacs, like any serious operating system, of course has its own [[https://elpa.gnu.org/][package management system]].
+
+#+BEGIN_SRC elisp 
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+(package-initialize)
+#+END_SRC
+
+For now I install all packages here. In the future I intend to use use-package
+for better readabiltiy and maintainablility.
+
+#+BEGIN_SRC elisp 
+(defvar my-packages '(color-theme-solarized
+                      evil
+                      exec-path-from-shell
+                      which-key
+                      ido-vertical-mode
+                      iedit
+                      magit
+                      cider
+                      clj-refactor
+                      expectations-mode
+                      restclient))
+(dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
+#+END_SRC
+
+** Mac stuff
+When launching a GUI application in MacOS it does not by default pick up
+environment variables from =.profile=. Here is a solution.
+
+#+BEGIN_SRC elisp 
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+#+END_SRC
+
+** Colors
+I like [[http://ethanschoonover.com/solarized][the solarized color scheme]].
+
+#+BEGIN_SRC elisp 
+(set-terminal-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
+(custom-set-variables '(solarized-termcolors 256))
+
+(setq solarized-default-background-mode 'light)
+
+(load-theme 'solarized t)
+(defun set-background-mode (frame mode)
+  (set-frame-parameter frame 'background-mode mode)
+  (when (not (display-graphic-p frame))
+    (set-terminal-parameter (frame-terminal frame) 'background-mode mode))
+  (enable-theme 'solarized))
+(defun switch-theme ()
+  (interactive)
+  (let ((mode  (if (eq (frame-parameter nil 'background-mode) 'dark)
+                   'light 'dark)))
+    (set-background-mode nil mode)))
+
+(add-hook 'after-make-frame-functions
+          (lambda (frame) (set-background-mode frame solarized-default-background-mode)))
+
+(set-background-mode nil solarized-default-background-mode)
+
+(global-set-key (kbd "C-c t") 'switch-theme)
+#+END_SRC
+
+** Fonts
+Adobes [[https://github.com/adobe-fonts/source-code-pro][Source Code Pro]] is a nice font.
+
+#+BEGIN_SRC elisp 
+(add-to-list 'default-frame-alist '(font . "Source Code Pro 14"))
+(when (display-graphic-p nil)
+  (set-face-attribute 'default t :font "Source Code Pro 14"))
+#+END_SRC
+
+** Vim
+My fingers like using the Vim navigation model, so that they don't have to leave
+the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/Evil][Evil-mode]]
+
+#+BEGIN_SRC elisp 
+(require 'evil)
+(evil-mode 1)
+#+END_SRC
+
+** Which key?
+To improve my shortcut knowledge.
+
+#+BEGIN_SRC elisp
+(which-key-mode)
+
+#+END_SRC
+
+** Find files
+This makes it easier (mostly) to find files and directories.
+
+#+BEGIN_SRC elisp 
+;; Find files with fuzzy matching
+(require 'ido-vertical-mode)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+#+END_SRC
+
+** Calendar
+I like my weeks to start on Mondays.
+
+#+BEGIN_SRC elisp 
+;; Calendar
+(setq calendar-week-start-day 1)
+#+END_SRC
+
+** Git
+Starting to get the hang of using Git through Magit.
+If you only copy one thing from this file, this is probably it.
+
+#+BEGIN_SRC elisp 
+(global-set-key (kbd "C-x g") 'magit-status)
+(setq magit-status-buffer-switch-function 'switch-to-buffer)
+(setq magit-last-seen-setup-instructions "1.4.0")
+#+END_SRC
+
+** Org-mode
+If you don't use Emacs for anything else, you should at least use Org-mode.
+
+#+BEGIN_SRC elisp 
+(setq org-startup-indented t)
+
+ (setq org-export-html-style-include-scripts nil
+       org-export-html-style-include-default nil)
+  (setq org-export-html-style
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />")
+#+END_SRC
+
+** Journal
+I will try out org-journal for journaling.
+
+#+BEGIN_SRC elisp 
+(require 'org-journal)
+(setq org-journal-date-format "%Y-%m-%d, %a")
+#+END_SRC
+
+** Clojure
+
+#+BEGIN_SRC elisp 
+(require 'clj-refactor)
+(defun my-clojure-mode-hook ()
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+(require 'expectations-mode)
+#+END_SRC
