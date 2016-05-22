@@ -56,7 +56,6 @@ for better readabiltiy and maintainablility.
 
 #+BEGIN_SRC elisp 
 (defvar my-packages '(color-theme-solarized
-                      exec-path-from-shell
                       which-key
                       ido-vertical-mode
                       expectations-mode
@@ -77,9 +76,10 @@ When launching a GUI application in MacOS it does not by default pick up
 environment variables from =.profile=. Here is a solution.
 
 #+BEGIN_SRC elisp 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
+  (use-package exec-path-from-shell
+    :config
+    (when (memq window-system '(mac ns))
+      (exec-path-from-shell-initialize)))
 #+END_SRC
 
 ** Colors
