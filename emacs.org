@@ -58,7 +58,6 @@ for better readabiltiy and maintainablility.
 (defvar my-packages '(color-theme-solarized
                       which-key
                       ido-vertical-mode
-                      expectations-mode
                       restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
 #+END_SRC
