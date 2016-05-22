@@ -59,9 +59,6 @@ for better readabiltiy and maintainablility.
                       exec-path-from-shell
                       which-key
                       ido-vertical-mode
-                      iedit
-                      cider
-                      clj-refactor
                       expectations-mode
                       restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
@@ -212,13 +209,16 @@ I will try out org-journal for journaling.
 ** Clojure
 
 #+BEGIN_SRC elisp 
-(require 'clj-refactor)
-(defun my-clojure-mode-hook ()
-  (clj-refactor-mode 1)
-  (yas-minor-mode 1) ; for adding require/use/import
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
-(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
-(require 'expectations-mode)
+  (use-package iedit)
+  (use-package cider)
+  (use-package clj-refactor
+    :config
+    (defun my-clojure-mode-hook ()
+      (clj-refactor-mode 1)
+      (yas-minor-mode 1) ; for adding require/use/import
+      (cljr-add-keybindings-with-prefix "C-c C-m"))
+    (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
+  (use-package expectations-mode)
 #+END_SRC
 
 #+PROPERTY: tangle ~/.emacs
