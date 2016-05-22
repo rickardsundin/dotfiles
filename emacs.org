@@ -56,7 +56,6 @@ for better readabiltiy and maintainablility.
 
 #+BEGIN_SRC elisp 
 (defvar my-packages '(color-theme-solarized
-                      evil
                       exec-path-from-shell
                       which-key
                       ido-vertical-mode
@@ -67,6 +66,14 @@ for better readabiltiy and maintainablility.
                       expectations-mode
                       restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
+#+END_SRC
+
+#+BEGIN_SRC elisp
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (require 'use-package)
 #+END_SRC
 
 ** Mac stuff
@@ -123,8 +130,10 @@ My fingers like using the Vim navigation model, so that they don't have to leave
 the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/Evil][Evil-mode]]
 
 #+BEGIN_SRC elisp 
-(require 'evil)
-(evil-mode 1)
+  (use-package evil
+    :ensure t
+    :config
+    (evil-mode 1))
 #+END_SRC
 
 ** Which key?
