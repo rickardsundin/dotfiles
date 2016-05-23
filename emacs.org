@@ -207,6 +207,11 @@ I will try out org-journal for journaling.
   (use-package expectations-mode)
 #+END_SRC
 
+** Javascript
+#+BEGIN_SRC 
+(setq js-indent-level 2)
+#+END_SRC
+
 #+PROPERTY: tangle ~/.emacs
 #+PROPERTY: results silent
 #+PROPERTY: eval no-export
