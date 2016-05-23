@@ -171,10 +171,15 @@ If you only copy one thing from this file, this is probably it.
 If you don't use Emacs for anything else, you should at least use Org-mode.
 
 #+BEGIN_SRC elisp 
-(setq org-startup-indented t)
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'org-bullets-mode))
 
- (setq org-export-html-style-include-scripts nil
-       org-export-html-style-include-default nil)
+  (setq org-startup-indented t)
+
+  (setq org-export-html-style-include-scripts nil
+        org-export-html-style-include-default nil)
   (setq org-export-html-style
         "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />")
 #+END_SRC
