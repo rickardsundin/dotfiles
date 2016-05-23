@@ -55,8 +55,7 @@ For now I install all packages here. In the future I intend to use use-package
 for better readabiltiy and maintainablility.
 
 #+BEGIN_SRC elisp 
-(defvar my-packages '(color-theme-solarized
-                      which-key
+(defvar my-packages '(which-key
                       ido-vertical-mode
                       restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
@@ -82,33 +81,16 @@ environment variables from =.profile=. Here is a solution.
 #+END_SRC
 
 ** Colors
-I like [[http://ethanschoonover.com/solarized][the solarized color scheme]].
+I like to add the [[http://ethanschoonover.com/solarized][Solarized]] and [[http://kippura.org/zenburnpage/][Zenburn]] color themes. Use =M-x load-theme=
+to switch theme, or =M-x disable-theme= to go back to the default theme.
 
 #+BEGIN_SRC elisp 
-(set-terminal-parameter nil 'background-mode 'dark)
-(load-theme 'solarized t)
-(custom-set-variables '(solarized-termcolors 256))
-
-(setq solarized-default-background-mode 'light)
-
-(load-theme 'solarized t)
-(defun set-background-mode (frame mode)
-  (set-frame-parameter frame 'background-mode mode)
-  (when (not (display-graphic-p frame))
-    (set-terminal-parameter (frame-terminal frame) 'background-mode mode))
-  (enable-theme 'solarized))
-(defun switch-theme ()
-  (interactive)
-  (let ((mode  (if (eq (frame-parameter nil 'background-mode) 'dark)
-                   'light 'dark)))
-    (set-background-mode nil mode)))
-
-(add-hook 'after-make-frame-functions
-          (lambda (frame) (set-background-mode frame solarized-default-background-mode)))
-
-(set-background-mode nil solarized-default-background-mode)
-
-(global-set-key (kbd "C-c t") 'switch-theme)
+  (use-package zenburn-theme
+    :ensure t)
+  (use-package solarized-theme
+    :ensure t
+    :config
+    (load-theme 'solarized-light t))
 #+END_SRC
 
 ** Fonts
