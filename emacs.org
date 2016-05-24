@@ -56,7 +56,6 @@ for better readabiltiy and maintainablility.
 
 #+BEGIN_SRC elisp 
 (defvar my-packages '(which-key
-                      ido-vertical-mode
                       restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
 #+END_SRC
@@ -128,13 +127,14 @@ To improve my shortcut knowledge.
 This makes it easier (mostly) to find files and directories.
 
 #+BEGIN_SRC elisp 
-;; Find files with fuzzy matching
-(require 'ido-vertical-mode)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+  (use-package ido-vertical-mode
+    :ensure t
+    :config
+    (setq ido-enable-flex-matching t)
+    (setq ido-everywhere t)
+    (ido-mode 1)
+    (ido-vertical-mode 1)
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
 #+END_SRC
 
 ** Calendar
