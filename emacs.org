@@ -90,7 +90,9 @@ to switch theme, or =M-x disable-theme= to go back to the default theme.
   (use-package solarized-theme
     :ensure t
     :config
-    (load-theme 'zenburn t))
+    (load-theme 'zenburn t)
+    (custom-theme-set-faces
+     'zenburn `(org-todo ((t (:bold t :foreground "#CC9393" :background "#3F3F3F" :weight bold))))))
 #+END_SRC
 
 ** Fonts
