@@ -173,11 +173,14 @@ If you only copy one thing from this file, this is probably it.
 If you don't use Emacs for anything else, you should at least use Org-mode.
 
 #+BEGIN_SRC elisp 
-  (use-package org-bullets
-    :ensure t
-    :config
-    (add-hook 'org-mode-hook 'org-bullets-mode))
-
+  (setq org-export-html-style-include-scripts nil
+        org-export-html-style-include-default nil
+        org-export-html-style
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />"
+        org-startup-indented t
+        org-src-fontify-natively t
+        org-todo-keywords
+        '((sequence "TODO(t)" "DOING(i)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")))
   (font-lock-add-keywords
    'org-mode `(("^\\*+ \\(TODO\\) " 
                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "⚑")
@@ -185,18 +188,19 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
                ("^\\*+ \\(DOING\\) "
                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "⚐")
                           nil)))
+               ("^\\*+ \\(WAITING\\) "
+                (1 (progn (compose-region (match-beginning 1) (match-end 1) "⌛")
+                          nil)))
                ("^\\*+ \\(CANCELED\\) "
                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "✘")
                           nil)))
                ("^\\*+ \\(DONE\\) "
                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "✔")
                           nil)))))
-  (setq org-startup-indented t)
-
-  (setq org-export-html-style-include-scripts nil
-        org-export-html-style-include-default nil)
-  (setq org-export-html-style
-        "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />")
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'org-bullets-mode))
 #+END_SRC
 
 ** Journal
