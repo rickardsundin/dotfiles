@@ -75,6 +75,7 @@ environment variables from =.profile=. Here is a solution.
 
 #+BEGIN_SRC elisp 
   (use-package exec-path-from-shell
+    :ensure t
     :config
     (when (memq window-system '(mac ns))
       (exec-path-from-shell-initialize)))
@@ -150,6 +151,7 @@ If you only copy one thing from this file, this is probably it.
 
 #+BEGIN_SRC elisp 
   (use-package magit
+    :ensure t
     :bind
     ("C-x g" . magit-status)
     :config
@@ -195,16 +197,21 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
 I will try out org-journal for journaling.
 
 #+BEGIN_SRC elisp 
-(require 'org-journal)
-(setq org-journal-date-format "%Y-%m-%d, %a")
+  (use-package org-journal
+    :ensure t
+    :config
+    (setq org-journal-date-format "%Y-%m-%d, %a"))
 #+END_SRC
 
 ** Clojure
 
 #+BEGIN_SRC elisp 
-  (use-package iedit)
-  (use-package cider)
+  (use-package iedit
+    :ensure t)
+  (use-package cider
+    :ensure t)
   (use-package clj-refactor
+    :ensure t
     :config
     (defun my-clojure-mode-hook ()
       (clj-refactor-mode 1)
