@@ -33,6 +33,12 @@ Also remove the startup message and the message explaining the scratch buffer.
 (setq initial-scratch-message "")
 #+END_SRC
 
+I like to see the current column displayed on the mode line.
+
+#+BEGIN_SRC elisp
+(setq column-number-mode t)
+#+END_SRC
+
 ** Backup files
 Keep all backup files in one place.
 
