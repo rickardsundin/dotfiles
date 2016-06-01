@@ -209,6 +209,25 @@ I will try out org-journal for journaling.
     (setq org-journal-date-format "%Y-%m-%d, %a"))
 #+END_SRC
 
+** General software development
+Some features are useful for all computer langugages.
+
+Company provides in-buffer completion.
+#+BEGIN_SRC elisp
+  (use-package company
+    :ensure t
+    :config
+    (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+
+Flycheck provides on-the-fly syntax checking.
+#+BEGIN_SRC elisp
+  (use-package flycheck
+    :ensure t
+    :config
+    (add-hook 'after-init-hook #'global-flycheck-mode))
+#+END_SRC
+
 ** Clojure
 
 #+BEGIN_SRC elisp 
