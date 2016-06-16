@@ -177,22 +177,27 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
         org-src-fontify-natively t
         org-todo-keywords
         '((sequence "TODO(t)" "DOING(i)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")))
-  (font-lock-add-keywords
-   'org-mode `(("^\\*+ \\(TODO\\) " 
-                (1 (progn (compose-region (match-beginning 1) (match-end 1) "⚑")
-                          nil)))
-               ("^\\*+ \\(DOING\\) "
-                (1 (progn (compose-region (match-beginning 1) (match-end 1) "➙")
-                          nil)))
-               ("^\\*+ \\(WAITING\\) "
-                (1 (progn (compose-region (match-beginning 1) (match-end 1) "⌛")
-                          nil)))
-               ("^\\*+ \\(CANCELED\\) "
-                (1 (progn (compose-region (match-beginning 1) (match-end 1) "✘")
-                          nil)))
-               ("^\\*+ \\(DONE\\) "
-                (1 (progn (compose-region (match-beginning 1) (match-end 1) "✔")
-                          nil)))))
+
+  (setq-local todo-keywords
+              `(("^\\*+ \\(TODO\\) " 
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "⚑")
+                           nil)))
+                ("^\\*+ \\(DOING\\) "
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "➙")
+                           nil)))
+                ("^\\*+ \\(WAITING\\) "
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "⌛")
+                           nil)))
+                ("^\\*+ \\(CANCELED\\) "
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "✘")
+                           nil)))
+                ("^\\*+ \\(DONE\\) "
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "✔")
+                           nil)))))
+
+  (font-lock-add-keywords 'org-mode todo-keywords)
+  (font-lock-add-keywords 'org-journal-mode todo-keywords)
+
   (use-package org-bullets
     :ensure t
     :config
