@@ -1,0 +1,56 @@
+#+TITLE:  Haskell Configuration File
+#+AUTHOR: Rickard Sundin
+#+EMAIL:  rickard@snart.nu
+
+* Introduction
+This is how I setup my Haskell development environment on Macos.
+
+** Installation
+
+First install [[https://haskell.org/ghc/][ghc]].
+
+#+BEGIN_SRC sh :tangle no
+brew install ghc
+#+END_SRC
+
+Install [[http://haskellstack.org/][stack]].
+
+#+BEGIN_SRC sh :tangle no
+brew install haskell-stack
+#+END_SRC
+
+Use [[http://commercialhaskell.github.io/intero/][Intero]] for Emacs.
+
+#+BEGIN_SRC elisp
+(use-package intero
+  :config
+  (add-hook 'haskell-mode-hook 'intero-mode))
+#+END_SRC
+
+** Create a new project
+
+#+BEGIN_SRC sh :tangle no
+stack new my-project
+#+END_SRC
+
+Get the appropriate GHC for my-project.
+
+#+BEGIN_SRC sh :tangle no
+cd my-project
+stack setup
+#+END_SRC
+
+
+* Technical Artifacts
+Make sure that we can simply =require= this library.
+
+#+BEGIN_SRC elisp
+(provide 'init-haskell)
+#+END_SRC
+
+#+PROPERTY: tangle ~/.emacs.d/elisp/init-haskell.el
+#+PROPERTY: results silent
+#+PROPERTY: eval no-export
+#+PROPERTY: comments org 
+#+OPTIONS:  num:nil toc:nil todo:nil tasks:nil tags:nil
+#+OPTIONS:  skip:nil author:nil email:nil creator:nil tim

@@ -74,6 +74,13 @@ for better readabiltiy and maintainablility.
   (require 'use-package)
 #+END_SRC
 
+** Load Path
+This is where to find packages not available via package manager:
+
+#+BEGIN_SRC elisp
+(add-to-list 'load-path (concat (getenv "HOME") "/.emacs.d/elisp"))
+#+END_SRC
+
 ** Mac stuff
 When launching a GUI application in MacOS it does not by default pick up
 environment variables from =.profile=. Here is a solution.
@@ -249,6 +256,13 @@ Flycheck provides on-the-fly syntax checking.
       (cljr-add-keybindings-with-prefix "C-c C-m"))
     (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
   (use-package expectations-mode)
+#+END_SRC
+
+** Haskell
+See [[file:haskell.org][haskell.org]] for details on my Haskell setup.
+
+#+BEGIN_SRC elisp
+(require 'init-haskell)
 #+END_SRC
 
 ** Javascript elisp
