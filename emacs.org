@@ -251,7 +251,7 @@ Flycheck provides on-the-fly syntax checking.
   (use-package expectations-mode)
 #+END_SRC
 
-** Javascript
+** Javascript elisp
 #+BEGIN_SRC 
 (setq js-indent-level 2)
 #+END_SRC
