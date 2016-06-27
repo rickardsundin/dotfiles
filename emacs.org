@@ -259,21 +259,10 @@ Flycheck provides on-the-fly syntax checking.
 #+END_SRC
 
 ** Clojure
+See [[file:clojure.org][clojure.org]] for details on my Clojure setup.
 
-#+BEGIN_SRC elisp 
-  (use-package iedit
-    :ensure t)
-  (use-package cider
-    :ensure t)
-  (use-package clj-refactor
-    :ensure t
-    :config
-    (defun my-clojure-mode-hook ()
-      (clj-refactor-mode 1)
-      (yas-minor-mode 1) ; for adding require/use/import
-      (cljr-add-keybindings-with-prefix "C-c C-m"))
-    (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
-  (use-package expectations-mode)
+#+BEGIN_SRC elisp
+(require 'init-clojure)
 #+END_SRC
 
 ** Haskell
