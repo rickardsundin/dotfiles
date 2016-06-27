@@ -59,7 +59,9 @@ I like to see the current column displayed on the mode line.
 Keep all backup files in one place.
 
 #+BEGIN_SRC elisp 
-(setq backup-directory-alist '(("." . "~/.emacs_backups")))
+  (setq backup-directory-alist
+        `(("." . ,(expand-file-name
+                   (rs/emacs-subdirectory "backups")))))
 #+END_SRC
 
 ** Package management
