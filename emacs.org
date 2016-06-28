@@ -176,6 +176,21 @@ other things) makes it easier to find files and directories.
     (global-set-key (kbd "M-y") 'helm-show-kill-ring))
 #+END_SRC
 
+** Projectile
+[[http://batsov.com/projectile/][Projectile]] is a project navigation and management library.
+
+#+BEGIN_SRC elisp
+  (use-package projectile
+    :ensure t
+    :config
+    (projectile-global-mode))
+
+  (use-package helm-projectile
+    :ensure t
+    :config
+    (helm-projectile-on))
+#+END_SRC
+
 ** Calendar
 I like my weeks to start on Mondays.
 
