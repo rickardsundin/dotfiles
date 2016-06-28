@@ -154,18 +154,26 @@ To improve my shortcut knowledge.
 
 #+END_SRC
 
-** Find files
-This makes it easier (mostly) to find files and directories.
+** Helm 
+[[https://emacs-helm.github.io/helm/][Helm]] is an incremental completion and selection narrowing framework that (amongst
+other things) makes it easier to find files and directories.
 
 #+BEGIN_SRC elisp 
-  (use-package ido-vertical-mode
+  (use-package helm
     :ensure t
     :config
-    (setq ido-enable-flex-matching t)
-    (setq ido-everywhere t)
-    (ido-mode 1)
-    (ido-vertical-mode 1)
-    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
+    (require 'helm-config)
+    (helm-mode 1)
+    (helm-autoresize-mode 1)
+    (define-key global-map [remap find-file] 'helm-find-files)
+    (define-key global-map [remap occur] 'helm-occur)
+    (define-key global-map [remap list-buffers] 'helm-buffers-list)
+    (define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z")  'helm-select-action)
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring))
 #+END_SRC
 
 ** Calendar
