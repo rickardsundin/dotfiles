@@ -79,8 +79,7 @@ For now I install all packages here. In the future I intend to use use-package
 for better readabiltiy and maintainablility.
 
 #+BEGIN_SRC elisp 
-(defvar my-packages '(which-key
-                      restclient))
+(defvar my-packages '(restclient))
 (dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
 #+END_SRC
 
@@ -150,7 +149,10 @@ the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/
 To improve my shortcut knowledge.
 
 #+BEGIN_SRC elisp
-(which-key-mode)
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
 
 #+END_SRC
 
