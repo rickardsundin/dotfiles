@@ -75,13 +75,8 @@ Emacs, like any serious operating system, of course has its own [[https://elpa.g
 (package-initialize)
 #+END_SRC
 
-For now I install all packages here. In the future I intend to use use-package
-for better readabiltiy and maintainablility.
-
-#+BEGIN_SRC elisp 
-(defvar my-packages '(restclient))
-(dolist (p my-packages) (unless (package-installed-p p) (package-install p)))
-#+END_SRC
+By installing use-package, package management and configuration is kept together which
+gives better readabiltiy and maintainablility.
 
 #+BEGIN_SRC elisp
   (unless (package-installed-p 'use-package)
@@ -300,6 +295,13 @@ See [[file:haskell.org][haskell.org]] for details on my Haskell setup.
 ** Javascript elisp
 #+BEGIN_SRC 
 (setq js-indent-level 2)
+#+END_SRC
+
+** Restclient
+Mode to use Emacs as a REST client.
+#+BEGIN_SRC elisp
+(use-package restclient
+  :ensure t)
 #+END_SRC
 
 #+PROPERTY: tangle ~/.emacs
