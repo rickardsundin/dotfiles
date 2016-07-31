@@ -292,8 +292,8 @@ See [[file:haskell.org][haskell.org]] for details on my Haskell setup.
 (require 'init-haskell)
 #+END_SRC
 
-** Javascript elisp
-#+BEGIN_SRC 
+** Javascript
+#+BEGIN_SRC elisp
 (setq js-indent-level 2)
 #+END_SRC
 
