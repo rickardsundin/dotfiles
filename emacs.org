@@ -15,9 +15,9 @@ try to always use keyboard shortcuts anyways.
 (scroll-bar-mode -1)
 #+END_SRC
 
-Usually I never want my computer to beep at me.
-Due to a bug that makes [[http://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662][visible-bell cause display artifacts on OS X 10.11]] I use
-a [[http://stuff-things.net/2015/10/05/emacs-visible-bell-work-around-on-os-x-el-capitan/][workaround]] that flashes the mode line instead.
+Usually I never want my computer to beep at me. The default visible bell 
+draws a big warning sign with an exclamation mark in the middle of the frame.
+I prefer [[http://stuff-things.net/2015/10/05/emacs-visible-bell-work-around-on-os-x-el-capitan/][this slick implementaion]] that flashes the mode line instead.
 
 #+BEGIN_SRC elisp 
   (setq visible-bell nil)
