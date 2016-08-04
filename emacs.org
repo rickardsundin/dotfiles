@@ -229,7 +229,7 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
 
   (setq-local todo-keywords
               `(("^\\*+ \\(TODO\\) " 
-                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "⚑")
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "☐")
                            nil)))
                 ("^\\*+ \\(DOING\\) "
                  (1 (progn (compose-region (match-beginning 1) (match-end 1) "➙")
@@ -238,10 +238,13 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
                  (1 (progn (compose-region (match-beginning 1) (match-end 1) "⌛")
                            nil)))
                 ("^\\*+ \\(CANCELED\\) "
-                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "✘")
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "×")
+                           nil)))
+                ("^\\(CLOCK:\\)"
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "◉")
                            nil)))
                 ("^\\*+ \\(DONE\\) "
-                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "✔")
+                 (1 (progn (compose-region (match-beginning 1) (match-end 1) "☑")
                            nil)))))
 
   (font-lock-add-keywords 'org-mode todo-keywords)
