@@ -141,8 +141,7 @@ the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/
 #+END_SRC
 
 ** Which key?
-To improve my shortcut knowledge.
-
+[[https://github.com/justbur/emacs-which-key][Which-key]] helps to improve my shortcut knowledge.
 #+BEGIN_SRC elisp
 (use-package which-key
   :ensure t
@@ -150,6 +149,11 @@ To improve my shortcut knowledge.
   (which-key-mode))
 
 #+END_SRC
+
+When it is installed, I can type a partial command sequence, for exampel =C-x=, and after one second a list of all keyboard shortcuts
+starting with that sequence is presented.
+
+If there are more commands than will fit in the buffer window, is is possible to press =C-h n= to go to the next page and =C-h p= to go back again.
 
 ** Helm 
 [[https://emacs-helm.github.io/helm/][Helm]] is an incremental completion and selection narrowing framework that (amongst
