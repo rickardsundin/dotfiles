@@ -218,6 +218,8 @@ If you only copy one thing from this file, this is probably it.
 If you don't use Emacs for anything else, you should at least use Org-mode.
 
 #+BEGIN_SRC elisp 
+  (define-key global-map "\C-ca" 'org-agenda)
+
   (setq org-export-html-style-include-scripts nil
         org-export-html-style-include-default nil
         org-export-html-style
