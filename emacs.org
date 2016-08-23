@@ -219,6 +219,7 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
 
 #+BEGIN_SRC elisp 
   (define-key global-map "\C-ca" 'org-agenda)
+  (setq org-log-done t)
 
   (setq org-export-html-style-include-scripts nil
         org-export-html-style-include-default nil
