@@ -216,18 +216,32 @@ If you only copy one thing from this file, this is probably it.
 
 * Org-mode
 If you don't use Emacs for anything else, you should at least use Org-mode.
+** Basic appearance
+Fold headers when a document is opened.
+#+BEGIN_SRC elisp
+  (setq org-startup-indented t)
+#+END_SRC
 
+Each codeblock should be coloured and indented according to its own language rules.
+#+BEGIN_SRC elisp
+   (setq org-src-fontify-natively t)
+#+END_SRC
+
+** Bullets
+This packages displayes the asterisks in front of headers as nice UTF-8 bullets.
+ 
 #+BEGIN_SRC elisp 
-  (define-key global-map "\C-ca" 'org-agenda)
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'org-bullets-mode))
+#+END_SRC
+
+** Tasks
+#+BEGIN_SRC elisp 
   (setq org-log-done t)
 
-  (setq org-export-html-style-include-scripts nil
-        org-export-html-style-include-default nil
-        org-export-html-style
-        "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />"
-        org-startup-indented t
-        org-src-fontify-natively t
-        org-todo-keywords
+  (setq org-todo-keywords
         '((sequence "TODO(t)" "DOING(i)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")))
 
   (setq-local todo-keywords
@@ -252,11 +266,23 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
 
   (font-lock-add-keywords 'org-mode todo-keywords)
   (font-lock-add-keywords 'org-journal-mode todo-keywords)
+#+END_SRC
 
-  (use-package org-bullets
-    :ensure t
-    :config
-    (add-hook 'org-mode-hook 'org-bullets-mode))
+** Agenda
+The agenda gives you an overview of org-mode tasks and deadlines.
+
+#+BEGIN_SRC elisp 
+  (define-key global-map "\C-ca" 'org-agenda)
+#+END_SRC
+
+** Exporting
+It is really easy to export (shortcut =C-c C-e=) an org-mode document as HTML, PDF or other formats.
+#+BEGIN_SRC elisp
+  (setq org-export-html-style-include-scripts nil
+        org-export-html-style-include-default nil
+        org-export-html-style
+        "<link rel=\"stylesheet\" type=\"text/css\" href=\"org-style.css\" />")
+
 #+END_SRC
 
 * Journal
