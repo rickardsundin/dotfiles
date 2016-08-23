@@ -5,7 +5,7 @@
 * Introduction
 This is my =.emacs= file. It is written in org-mode thanks to [[http://www.howardism.org/][Howard Abrahams]].
 
-** Basic appearance
+* Basic appearance
 For a clean appearance I remove the toolbar, menubar and scrollbars. I always
 try to always use keyboard shortcuts anyways.
 
@@ -39,7 +39,7 @@ I like to see the current column displayed on the mode line.
 (setq column-number-mode t)
 #+END_SRC
 
-** Directory structure
+* Directory structure
 
 #+BEGIN_SRC elisp
   (defconst rs/emacs-directory (concat (getenv "HOME") "/.emacs.d/"))
@@ -55,7 +55,7 @@ I like to see the current column displayed on the mode line.
         (make-directory dir))))
 #+END_SRC
 
-** Backup files
+* Backup files
 Keep all backup files in one place.
 
 #+BEGIN_SRC elisp 
@@ -64,7 +64,7 @@ Keep all backup files in one place.
                    (rs/emacs-subdirectory "backups")))))
 #+END_SRC
 
-** Package management
+* Package management
 Emacs, like any serious operating system, of course has its own [[https://elpa.gnu.org/][package management system]].
 
 #+BEGIN_SRC elisp 
@@ -86,14 +86,14 @@ gives better readabiltiy and maintainablility.
   (require 'use-package)
 #+END_SRC
 
-** Load Path
+* Load Path
 This is where to find packages not available via package manager:
 
 #+BEGIN_SRC elisp
 (add-to-list 'load-path (rs/emacs-subdirectory "elisp"))
 #+END_SRC
 
-** Mac stuff
+* Mac stuff
 When launching a GUI application in MacOS it does not by default pick up
 environment variables from =.profile=. Here is a solution.
 
@@ -105,7 +105,7 @@ environment variables from =.profile=. Here is a solution.
       (exec-path-from-shell-initialize)))
 #+END_SRC
 
-** Colors
+* Colors
 I like to add the [[http://ethanschoonover.com/solarized][Solarized]] and [[http://kippura.org/zenburnpage/][Zenburn]] color themes. Use =M-x load-theme=
 to switch theme, or =M-x disable-theme= to go back to the default theme.
 
@@ -120,7 +120,7 @@ to switch theme, or =M-x disable-theme= to go back to the default theme.
      'zenburn `(org-todo ((t (:bold t :foreground "#CC9393" :background "#3F3F3F" :weight bold))))))
 #+END_SRC
 
-** Fonts
+* Fonts
 Adobes [[https://github.com/adobe-fonts/source-code-pro][Source Code Pro]] is a nice font.
 
 #+BEGIN_SRC elisp 
@@ -129,7 +129,7 @@ Adobes [[https://github.com/adobe-fonts/source-code-pro][Source Code Pro]] is a 
   (set-face-attribute 'default t :font "Source Code Pro 14"))
 #+END_SRC
 
-** Vim
+* Vim
 My fingers like using the Vim navigation model, so that they don't have to leave
 the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/Evil][Evil-mode]]
 
@@ -140,7 +140,7 @@ the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/
     (evil-mode 1))
 #+END_SRC
 
-** Which key?
+* Which key?
 [[https://github.com/justbur/emacs-which-key][Which-key]] helps to improve my shortcut knowledge.
 #+BEGIN_SRC elisp
 (use-package which-key
@@ -155,7 +155,7 @@ starting with that sequence is presented.
 
 If there are more commands than will fit in the buffer window, is is possible to press =C-h n= to go to the next page and =C-h p= to go back again.
 
-** Helm 
+* Helm 
 [[https://emacs-helm.github.io/helm/][Helm]] is an incremental completion and selection narrowing framework that (amongst
 other things) makes it easier to find files and directories.
 
@@ -177,7 +177,7 @@ other things) makes it easier to find files and directories.
     (global-set-key (kbd "M-y") 'helm-show-kill-ring))
 #+END_SRC
 
-** Projectile
+* Projectile
 [[http://batsov.com/projectile/][Projectile]] is a project navigation and management library.
 
 #+BEGIN_SRC elisp
@@ -192,7 +192,7 @@ other things) makes it easier to find files and directories.
     (helm-projectile-on))
 #+END_SRC
 
-** Calendar
+* Calendar
 I like my weeks to start on Mondays.
 
 #+BEGIN_SRC elisp 
@@ -200,7 +200,7 @@ I like my weeks to start on Mondays.
 (setq calendar-week-start-day 1)
 #+END_SRC
 
-** Git
+* Git
 Starting to get the hang of using Git through Magit.
 If you only copy one thing from this file, this is probably it.
 
@@ -214,7 +214,7 @@ If you only copy one thing from this file, this is probably it.
     (setq magit-last-seen-setup-instructions "1.4.0"))
 #+END_SRC
 
-** Org-mode
+* Org-mode
 If you don't use Emacs for anything else, you should at least use Org-mode.
 
 #+BEGIN_SRC elisp 
@@ -259,7 +259,7 @@ If you don't use Emacs for anything else, you should at least use Org-mode.
     (add-hook 'org-mode-hook 'org-bullets-mode))
 #+END_SRC
 
-** Journal
+* Journal
 I will try out org-journal for journaling.
 
 #+BEGIN_SRC elisp 
@@ -269,7 +269,7 @@ I will try out org-journal for journaling.
     (setq org-journal-date-format "%Y-%m-%d, %a"))
 #+END_SRC
 
-** General software development
+* General software development
 Some features are useful for all computer langugages.
 
 Company provides in-buffer completion.
@@ -288,26 +288,26 @@ Flycheck provides on-the-fly syntax checking.
     (add-hook 'after-init-hook #'global-flycheck-mode))
 #+END_SRC
 
-** Clojure
+* Clojure
 See [[file:clojure.org][clojure.org]] for details on my Clojure setup.
 
 #+BEGIN_SRC elisp
 (require 'init-clojure)
 #+END_SRC
 
-** Haskell
+* Haskell
 See [[file:haskell.org][haskell.org]] for details on my Haskell setup.
 
 #+BEGIN_SRC elisp
 (require 'init-haskell)
 #+END_SRC
 
-** Javascript
+* Javascript
 #+BEGIN_SRC elisp
 (setq js-indent-level 2)
 #+END_SRC
 
-** Restclient
+* Restclient
 Mode to use Emacs as a REST client.
 #+BEGIN_SRC elisp
 (use-package restclient
