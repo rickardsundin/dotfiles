@@ -273,6 +273,7 @@ The agenda gives you an overview of org-mode tasks and deadlines.
 
 #+BEGIN_SRC elisp 
   (define-key global-map "\C-ca" 'org-agenda)
+  (setq org-agenda-files '("~/Documents/org" "~/Documents" "~"))
 #+END_SRC
 
 ** Exporting
