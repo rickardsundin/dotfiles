@@ -346,6 +346,17 @@ See [[file:haskell.org][haskell.org]] for details on my Haskell setup.
 (setq js-indent-level 2)
 #+END_SRC
 
+* HTML
+[[https://github.com/smihica/emmet-mode][Emmet-mode]] is useful whenever you quickly need to type some HTML.
+Autostart it on any markup modes
+
+#+BEGIN_SRC elisp
+(use-package emmet-mode
+:ensure t
+:config
+(add-hook 'sgml-mode-hook 'emmet-mode))
+#+END_SRC
+
 * Restclient
 Mode to use Emacs as a REST client.
 #+BEGIN_SRC elisp
