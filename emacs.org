@@ -296,6 +296,18 @@ I will try out org-journal for journaling.
     (setq org-journal-date-format "%Y-%m-%d, %a"))
 #+END_SRC
 
+* Gpg
+Sometimes I need to read the value of =$SSH_AUTH_SOCK= from the path
+to be able to use GPG properly from Emacs.
+
+#+BEGIN_SRC elisp
+(defun refresh-ssh-auth-sock ()
+  "Read env variable SSH_AUTH_SOCK from path"
+  (interactive)
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK"))
+(define-key global-map "\C-cg" 'refresh-ssh-auth-sock)
+#+END_SRC
+
 * General software development
 Some features are useful for all computer langugages.
 
