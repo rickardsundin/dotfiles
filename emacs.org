@@ -177,6 +177,19 @@ other things) makes it easier to find files and directories.
     (global-set-key (kbd "M-y") 'helm-show-kill-ring))
 #+END_SRC
 
+[[https://github.com/ggreer/the_silver_searcher][The Silver Searcher]] is a useful tool to search quickly in multiple files.
+
+First it needs to be installed on your system.
+#+BEGIN_SRC sh :tangle no
+brew install the_silver_searcher
+#+END_SRC
+
+Then we install helm-ag.
+#+BEGIN_SRC elisp
+(use-package helm-ag
+:ensure t)
+#+END_SRC
+
 * Projectile
 [[http://batsov.com/projectile/][Projectile]] is a project navigation and management library.
 
