@@ -298,6 +298,18 @@ It is really easy to export (shortcut =C-c C-e=) an org-mode document as HTML, P
 
 #+END_SRC
 
+Module [[https://github.com/marsmining/ox-twbs][ox-twbs]] can export org-mode docs as HTML compatible with Twitter Bootstrap.
+#+BEGIN_SRC elisp
+  (use-package ox-twbs
+    :ensure t)
+#+END_SRC
+
+Module [[https://github.com/yjwen/org-reveal][org-reveal]] can export org-mode documents to reveal.js presentations. 
+#+BEGIN_SRC elisp
+  (use-package ox-reveal
+    :ensure t)
+#+END_SRC
+
 * Journal
 I will try out org-journal for journaling.
 
