@@ -288,6 +288,19 @@ The agenda gives you an overview of org-mode tasks and deadlines.
   (setq org-agenda-files '("~/Documents/org" "~/Documents" "~"))
 #+END_SRC
 
+** Babel
+[[http://plantuml.com][Plantuml]] is useful for creating simple diagrams.
+
+#+BEGIN_SRC elisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(;; other Babel languages
+     (plantuml . t)))
+
+  (setq org-plantuml-jar-path
+        (expand-file-name "/usr/local/Cellar/plantuml/8048/plantuml.8048.jar"))
+#+END_SRC
+
 ** Exporting
 It is really easy to export (shortcut =C-c C-e=) an org-mode document as HTML, PDF or other formats.
 #+BEGIN_SRC elisp
