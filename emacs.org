@@ -39,6 +39,20 @@ I like to see the current column displayed on the mode line.
 (setq column-number-mode t)
 #+END_SRC
 
+Show time in the mode line, but do not show load.
+
+#+BEGIN_SRC elisp
+(setq display-time-24hr-format t)
+(setq display-time-default-load-average nil)
+(display-time-mode 1)
+#+END_SRC
+
+Show battery status in the mode line.
+
+#+BEGIN_SRC elisp
+(display-battery-mode 1)
+#+END_SRC
+
 * Directory structure
 
 #+BEGIN_SRC elisp
