@@ -221,7 +221,11 @@ Then we install helm-ag.
   (use-package projectile
     :ensure t
     :config
-    (projectile-global-mode))
+    (projectile-global-mode)
+    (setq projectile-mode-line
+      '(:eval (if (file-remote-p default-directory)
+                  " Projectile"
+                  (format " [%s]" (projectile-project-name))))))
 
   (use-package helm-projectile
     :ensure t
