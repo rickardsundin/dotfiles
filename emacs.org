@@ -414,7 +414,8 @@ Mode to use Emacs as a REST client.
   :ensure t)
 #+END_SRC
 
-#+PROPERTY: tangle ~/.emacs
+#+PROPERTY: header-args:sh  :tangle no
+#+PROPERTY: header-args:elisp :tangle ~/.emacs.d/init.el
 #+PROPERTY: results silent
 #+PROPERTY: eval no-export
 #+PROPERTY: comments org 
