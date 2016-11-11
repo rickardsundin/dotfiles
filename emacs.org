@@ -144,6 +144,7 @@ the home row ('asdf' 'jkl;') that much. Queue [[https://www.emacswiki.org/emacs/
 #+BEGIN_SRC elisp
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :init
   (which-key-mode))
 
@@ -161,6 +162,7 @@ other things) makes it easier to find files and directories.
 #+BEGIN_SRC elisp 
   (use-package helm
     :ensure t
+    :diminish helm-mode
     :config
     (require 'helm-config)
     (helm-mode 1)
@@ -352,6 +354,7 @@ Company provides in-buffer completion.
 #+BEGIN_SRC elisp
   (use-package company
     :ensure t
+    :diminish company-mode
     :config
     (add-hook 'after-init-hook 'global-company-mode))
 #+END_SRC
@@ -360,6 +363,7 @@ Flycheck provides on-the-fly syntax checking.
 #+BEGIN_SRC elisp
   (use-package flycheck
     :ensure t
+    :diminish flycheck-mode
     :config
     (add-hook 'after-init-hook #'global-flycheck-mode))
 #+END_SRC
