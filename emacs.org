@@ -374,6 +374,19 @@ to be able to use GPG properly from Emacs.
 (define-key global-map "\C-cg" 'refresh-ssh-auth-sock)
 #+END_SRC
 
+* Snippets
+[[https://github.com/capitaomorte/yasnippet][Yasnippets]] lets you define and insert snippets of text or code.
+
+#+BEGIN_SRC elisp
+(use-package yasnippet
+  :ensure t
+  :diminish yas-minor-mode
+  :init
+  (yas-global-mode 1)
+  :config
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+#+END_SRC
+
 * General software development
 Some features are useful for all computer langugages.
 
