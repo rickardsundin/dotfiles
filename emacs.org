@@ -5,6 +5,19 @@
 * Introduction
 This is my =.emacs= file. It is written in org-mode thanks to [[http://www.howardism.org/][Howard Abrahams]].
 
+* Installation
+On MacOS, it is easy to install using [[http://brew.sh/][Homebrew]].
+
+#+BEGIN_SRC sh
+brew install emacs --with-cocoa --with-gnutls --with-librsvg --with-imagemagick
+brew linkapps emacs
+#+END_SRC
+
+In order to be able to open Emacs super quick, run emacs as a service in the background, and use =emacsclient= to open editor windows.
+#+BEGIN_SRC sh
+brew services start emacs
+#+END_SRC
+
 * Basic appearance
 For a clean appearance I remove the toolbar, menubar and scrollbars. I always
 try to always use keyboard shortcuts anyways.
