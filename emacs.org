@@ -101,6 +101,12 @@ Keep all backup files in one place.
                    (rs/emacs-subdirectory "backups")))))
 #+END_SRC
 
+* Security
+Check those server certificates.
+#+BEGIN_SRC elisp
+(setq tls-checktrust 'ask)
+#+END_SRC
+
 * Package management
 Emacs, like any serious operating system, of course has its own [[https://elpa.gnu.org/][package management system]].
 
