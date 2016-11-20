@@ -6,14 +6,24 @@
 This is my =.emacs= file. It is written in org-mode thanks to [[http://www.howardism.org/][Howard Abrahams]].
 
 * Installation
-On MacOS, it is easy to install using [[http://brew.sh/][Homebrew]].
+MacOS ships with a really old version of Emacs (=/usr/bin/emacs=), but it is easy to install the latest version using [[http://brew.sh/][Homebrew]]. I add some flags to include
+- [[https://en.wikipedia.org/wiki/Cocoa_(API)][Cocoa]], so that Emacs can run as a native MacOS application
+- [[https://www.gnutls.org/][GnuTLS]], so that Emacs can communicate securely with the internet using TLS
+- [[https://wiki.gnome.org/LibRsvg][LibRsvg]], so that Emacs can work with svg images
+- [[https://www.emacswiki.org/emacs/ImageMagick][Imagemagick]], so that Emacs can work with bitmap images
 
 #+BEGIN_SRC sh
 brew install emacs --with-cocoa --with-gnutls --with-librsvg --with-imagemagick
+#+END_SRC
+
+Homebrew can symlink Emacs into =/Applications=, allowing for easier access.
+
+#+BEGIN_SRC sh
 brew linkapps emacs
 #+END_SRC
 
-In order to be able to open Emacs super quick, run emacs as a service in the background, and use =emacsclient= to open editor windows.
+Homebrew can also make Emacs run as a service in the background. This allows me to use =emacsclient= to open new editor windows a lot quicker.
+
 #+BEGIN_SRC sh
 brew services start emacs
 #+END_SRC
