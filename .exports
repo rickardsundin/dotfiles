@@ -1,0 +1,2 @@
+# Enable installing Ruby gems without using sudo
+export GEM_HOME="$HOME/.gems"
