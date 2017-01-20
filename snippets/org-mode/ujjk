@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: ujjk
+# key: ujjk
+# --
+#+TITLE: Protokoll styrelsemöte
+#+DATE: `(format-time-string "%Y-%m-%d" (current-time))`
+#+LATEX_CLASS: ujjk
+#+LATEX_HEADER: \present{Mats Ersson, Rickard Sundin, Tony Hansson, Björn Isaksson, Johan Stenson, Elin Thörnblom}
+#+LATEX_HEADER: \absent{}
+
+* $0

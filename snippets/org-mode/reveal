@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reveal
+# key: reveal
+# --
+#+REVEAL_ROOT: file://~/Tools/reveal.js/3.3.0/
